@@ -136,7 +136,7 @@ TextureImporter:
         width: 138
         height: 138
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,13 +152,13 @@ TextureImporter:
       name: Button 1_1
       rect:
         serializedVersion: 2
-        x: 176
+        x: 177
         y: 222
-        width: 138
+        width: 136
         height: 138
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 31, y: 41, z: 31, w: 25}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -178,7 +178,7 @@ TextureImporter:
         width: 279
         height: 138
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,8 +199,8 @@ TextureImporter:
         width: 290
         height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 16, z: 11, w: 10}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -220,7 +220,7 @@ TextureImporter:
         width: 222
         height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -4,36 +4,42 @@ using UnityEngine;
 
 public class FishMovement : MonoBehaviour
 {
+    [Header("Movement")]
+    public CharacterController controller;
     public float speed = 2f;
-    public ParticleSystem ParticleSystem;
+
+    [Header("Effects")]
+    public ParticleSystem bubbleTrailEffect;
+    public GameObject playerMovingSound; 
+    private ParticleSystem.EmissionModule bubbleTrailEmission;
+
     void Start()
     {
-        ParticleSystem.Stop();
+        bubbleTrailEmission = bubbleTrailEffect.emission;
+        bubbleTrailEmission.rateOverTime = 0f;
+        playerMovingSound.SetActive(false);
     }
 
    
     void Update()
     {
-        if(Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-            ParticleSystem.Play();
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.down * speed * Time.deltaTime;
-            ParticleSystem.Play();
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-            ParticleSystem.Play();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-            ParticleSystem.Play();
-        }
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(move * speed * Time.deltaTime);
+        transform.Rotate(Vector3.up * x * 0.5f);
         
+        if(x != 0 || z != 0)
+        {
+            bubbleTrailEmission.rateOverTime = 10f;
+            playerMovingSound.SetActive(true);
+        }
+        else
+        {
+            bubbleTrailEmission.rateOverTime = 0f;
+            playerMovingSound.SetActive(false);
+        }
     }
 }
