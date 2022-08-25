@@ -12,16 +12,19 @@ public class FishMovement : MonoBehaviour
     public ParticleSystem bubbleTrailEffect;
     public GameObject playerMovingSound; 
     private ParticleSystem.EmissionModule bubbleTrailEmission;
+    [Header("Audio sources")]
     public AudioSource movingPlants;
-
+    public AudioSource startSplash;
+    public AudioSource collisionSound;
     
-
     void Start()
     {
         bubbleTrailEmission = bubbleTrailEffect.emission;
         bubbleTrailEmission.rateOverTime = 0f;
         playerMovingSound.SetActive(false);
+        startSplash.Play();
     }
+
 
    
     void Update()
@@ -51,5 +54,10 @@ public class FishMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         movingPlants.Play();
+    }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        collisionSound.Play();
     }
 }
