@@ -12,6 +12,9 @@ public class FishMovement : MonoBehaviour
     public ParticleSystem bubbleTrailEffect;
     public GameObject playerMovingSound; 
     private ParticleSystem.EmissionModule bubbleTrailEmission;
+    public AudioSource movingPlants;
+
+    
 
     void Start()
     {
@@ -31,15 +34,22 @@ public class FishMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
         transform.Rotate(Vector3.up * x * 0.5f);
         
-        if(x != 0 || z != 0)
+
+        if (x != 0 || z != 0)
         {
             bubbleTrailEmission.rateOverTime = 10f;
             playerMovingSound.SetActive(true);
+            
         }
         else
         {
             bubbleTrailEmission.rateOverTime = 0f;
             playerMovingSound.SetActive(false);
+            
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        movingPlants.Play();
     }
 }
